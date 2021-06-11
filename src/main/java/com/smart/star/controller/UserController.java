@@ -49,7 +49,9 @@ public class UserController {
     @ApiOperation("用户登录")
     @ApiImplicitParams({@ApiImplicitParam(name = "phone",value = "手机号"),
             @ApiImplicitParam(name = "password",value = "密码")})
-    public Result login(@RequestParam String phone, @RequestParam String password) {
+    public Result login(@RequestBody Map<String,String> params) {
+        String phone = params.get("phone");
+        String password = params.get("password");
         CkUserEntity user = userService.getUserByPhone(phone);
         if(user != null) {
             Boolean b = userService.matchesPwd(password, user.getPassword());
