@@ -4,6 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
 
 import java.util.Calendar;
 import java.util.Map;
@@ -20,6 +22,7 @@ public class JwtUtils {
     public static String generateToken(Map<String,String> map) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 7);
+
         //创建一个jwt builder
         JWTCreator.Builder jwt = JWT.create();
         //payload
