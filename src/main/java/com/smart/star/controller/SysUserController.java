@@ -1,6 +1,7 @@
 package com.smart.star.controller;
 
-import com.smart.star.entity.CkUserEntity;
+import com.smart.star.config.model.MyUserDetails;
+import com.smart.star.entity.SysUserEntity;
 import com.smart.star.service.UserService;
 import com.smart.star.util.JwtUtils;
 import com.smart.star.util.Result;
@@ -22,7 +23,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 @Api(tags = "用户管理")
-public class UserController {
+public class SysUserController {
 
     @Autowired
     private UserService userService;
@@ -32,7 +33,7 @@ public class UserController {
     @ApiImplicitParams({@ApiImplicitParam(name = "phone",value = "手机号"),
             @ApiImplicitParam(name = "password",value = "密码")})
     public Result register(@RequestParam String phone, @RequestParam String password) {
-        CkUserEntity user = userService.getUserByPhone(phone);
+        MyUserDetails user = userService.getUserByPhone(phone);
         if(user!=null) {
             return Result.fail("用户已存在！");
         }else {
@@ -52,7 +53,7 @@ public class UserController {
     public Result login(@RequestBody Map<String,String> params) {
         String phone = params.get("phone");
         String password = params.get("password");
-        CkUserEntity user = userService.getUserByPhone(phone);
+        MyUserDetails user = userService.getUserByPhone(phone);
         if(user != null) {
             Boolean b = userService.matchesPwd(password, user.getPassword());
             if(b) {

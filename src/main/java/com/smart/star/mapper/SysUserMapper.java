@@ -1,24 +1,27 @@
 package com.smart.star.mapper;
 
-import com.smart.star.entity.CkUserEntity;
+import com.smart.star.config.model.MyUserDetails;
+import com.smart.star.entity.SysUserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Author：yjw
  * @Date：2021/6/10
- * @Description: 用户管理DAO层
+ * @Description: 用户管理接口
  */
 @Mapper
 @Repository
-public interface UserMapper {
+public interface SysUserMapper {
 
     /**
      * @Description
      * @Param [id]
      * @return com.smart.star.entity.CkUserEntity
      **/
-    CkUserEntity getUserById(String id);
+    SysUserEntity getUserById(String id);
 
     /**
      * @Description
@@ -27,6 +30,10 @@ public interface UserMapper {
      **/
     Boolean register(String phone, String password);
 
-    CkUserEntity getUserByPhone(String phone);
+    MyUserDetails getUserByPhone(String phone);
+
+    List<String> getRoleByUserId(String userId);
+
+    List<String> getAuthorityByRoleCodes(List<String> roleCodes);
 
 }

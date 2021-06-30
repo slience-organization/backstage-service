@@ -1,7 +1,7 @@
 package com.smart.star.service.serviceImpl;
 
-import com.smart.star.entity.CkUserEntity;
-import com.smart.star.mapper.UserMapper;
+import com.smart.star.config.model.MyUserDetails;
+import com.smart.star.mapper.SysUserMapper;
 import com.smart.star.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    private SysUserMapper sysUserMapper;
 
     @Override
-    public CkUserEntity getUserByPhone(String phone) {
-        return userMapper.getUserByPhone(phone);
+    public MyUserDetails getUserByPhone(String phone) {
+        return sysUserMapper.getUserByPhone(phone);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(password);
 
-        return userMapper.register(phone, encodedPassword);
+        return sysUserMapper.register(phone, encodedPassword);
     }
 
     @Override

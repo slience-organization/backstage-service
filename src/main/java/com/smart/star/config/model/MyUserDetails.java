@@ -13,13 +13,22 @@ import java.util.Set;
  */
 public class MyUserDetails implements UserDetails {
 
+    private String id;
     private String password; //密码
     private String username; //用户名
-    private Set<GrantedAuthority> authorities; //权限
+    private Collection<? extends GrantedAuthority> authorities; //权限
     private boolean accountNonExpired; //账号是否未过期，默认为true
     private boolean accountNonLocked; //账号是否未锁定，默认为true
     private boolean credentialsNonExpired; //密码凭证是否未过期，默认为true
     private boolean enabled; //账户是否启用
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -29,7 +38,7 @@ public class MyUserDetails implements UserDetails {
         this.username = username;
     }
 
-    public void setAuthorities(Set<GrantedAuthority> authorities) {
+    public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
 

@@ -27,7 +27,7 @@ spring:
     password: EkUWKYcoACOC0G8JYSGCfoQYQPW4cBqNDwmENGzR7t6wj6j0JyUTArrltsCstcSNhf7Mo/dnPWHUmA52IqITEg==
     publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALhl0OKbP5NbluqVPCgC9rZjdh+CQk8C/u7N9XE2aa/RGymJsJHK0+FOTi8wYGcoXuG5hul6E3iwNFmdv0o+CAUCAwEAAQ==
     connection-properties: config.decrpt=true;config.decrypt.key=${spring.datasource.druid.publicKey}
-    url: jdbc:mysql://47.98.144.194:3306/mall?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://47.98.153.35:3306/mall?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

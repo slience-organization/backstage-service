@@ -1,7 +1,7 @@
 package com.smart.star.service;
 
-import com.smart.star.entity.CkUserEntity;
-import org.springframework.stereotype.Service;
+import com.smart.star.config.model.MyUserDetails;
+import com.smart.star.entity.SysUserEntity;
 
 /**
  * @Author：yjw
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  */
 public interface UserService {
 
-    CkUserEntity getUserByPhone(String phone);
+    MyUserDetails getUserByPhone(String phone);
 
     Boolean register(String phone, String password);
 

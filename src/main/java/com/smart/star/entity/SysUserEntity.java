@@ -7,20 +7,21 @@ import java.util.Objects;
 
 /**
  * @Author：yjw
- * @Date：2021/6/10
+ * @Date：2021/6/30
  * @Description:
  */
 @Entity
-@Table(name = "ck_user", schema = "mall")
-public class CkUserEntity {
+@Table(name = "sys_user", schema = "mall", catalog = "")
+public class SysUserEntity {
     private String id;
-    private String name;
+    private String username;
     private Boolean sex;
     private Date dateOfBirth;
     private String headPortrait;
     private String email;
     private String address;
     private String phone;
+    private Byte enabled;
     private String password;
     private Timestamp createTime;
     private String createUser;
@@ -38,13 +39,13 @@ public class CkUserEntity {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Basic
@@ -108,6 +109,16 @@ public class CkUserEntity {
     }
 
     @Basic
+    @Column(name = "enabled")
+    public Byte getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Byte enabled) {
+        this.enabled = enabled;
+    }
+
+    @Basic
     @Column(name = "password")
     public String getPassword() {
         return password;
@@ -161,12 +172,12 @@ public class CkUserEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CkUserEntity that = (CkUserEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(sex, that.sex) && Objects.equals(dateOfBirth, that.dateOfBirth) && Objects.equals(headPortrait, that.headPortrait) && Objects.equals(email, that.email) && Objects.equals(address, that.address) && Objects.equals(phone, that.phone) && Objects.equals(password, that.password) && Objects.equals(createTime, that.createTime) && Objects.equals(createUser, that.createUser) && Objects.equals(updateTime, that.updateTime) && Objects.equals(updateUser, that.updateUser);
+        SysUserEntity that = (SysUserEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(username, that.username) && Objects.equals(sex, that.sex) && Objects.equals(dateOfBirth, that.dateOfBirth) && Objects.equals(headPortrait, that.headPortrait) && Objects.equals(email, that.email) && Objects.equals(address, that.address) && Objects.equals(phone, that.phone) && Objects.equals(enabled, that.enabled) && Objects.equals(password, that.password) && Objects.equals(createTime, that.createTime) && Objects.equals(createUser, that.createUser) && Objects.equals(updateTime, that.updateTime) && Objects.equals(updateUser, that.updateUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, sex, dateOfBirth, headPortrait, email, address, phone, password, createTime, createUser, updateTime, updateUser);
+        return Objects.hash(id, username, sex, dateOfBirth, headPortrait, email, address, phone, enabled, password, createTime, createUser, updateTime, updateUser);
     }
 }
