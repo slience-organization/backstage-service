@@ -46,4 +46,8 @@
         values (#{uid},#{phone},#{password})
     </insert>
 
+    <select id="getAllUsers" resultType="com.smart.star.entity.SysUserEntity">
+        select * from sys_user
+    </select>
+
 </mapper>

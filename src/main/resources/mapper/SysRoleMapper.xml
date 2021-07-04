@@ -5,12 +5,16 @@
     <sql id="uid"> select REPLACE(uuid(),'-',''); </sql>
 
 
-    <insert id="addRole">
-        <selectKey keyProperty="uid" order="BEFORE">
+    <insert id="addRole" parameterType="map">
+        <selectKey keyProperty="uid" resultType="string" order="BEFORE">
             select replace(uuid(), '-', '') as id from dual
         </selectKey>
         insert into sys_role (id,name,code,remark)
         values (#{uid},#{name},#{code},#{remark})
     </insert>
+
+    <select id="getAllRoles" resultType="com.smart.star.entity.SysRoleEntity">
+        select * from sys_role
+    </select>
 
 </mapper>

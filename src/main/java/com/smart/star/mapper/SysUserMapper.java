@@ -1,11 +1,13 @@
 package com.smart.star.mapper;
 
 import com.smart.star.config.model.MyUserDetails;
+import com.smart.star.entity.SysRoleEntity;
 import com.smart.star.entity.SysUserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author：yjw
@@ -35,5 +37,7 @@ public interface SysUserMapper {
     List<String> getRoleByUserId(String userId);
 
     List<String> getAuthorityByRoleCodes(List<String> roleCodes);
+
+    List<SysUserEntity> getAllUsers();
 
 }

@@ -1,9 +1,11 @@
 package com.smart.star.mapper;
 
+import com.smart.star.entity.SysRoleEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,4 +17,6 @@ import java.util.Map;
 @Repository
 public interface SysRoleMapper {
     Boolean addRole(Map<String, Object> map);
+
+    List<SysRoleEntity> getAllRoles();
 }

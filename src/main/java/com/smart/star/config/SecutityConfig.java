@@ -27,7 +27,7 @@ public class SecutityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
                 .authorizeRequests()
-                .antMatchers("/*").permitAll();
+                .antMatchers("/**").permitAll();
                 //.anyRequest().access("@rbacService.hasPermission(request, authentication)");
     }
 

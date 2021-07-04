@@ -1,7 +1,9 @@
 package com.smart.star.controller;
 
 import com.smart.star.config.model.MyUserDetails;
+import com.smart.star.entity.SysRoleEntity;
 import com.smart.star.entity.SysUserEntity;
+import com.smart.star.mapper.SysUserMapper;
 import com.smart.star.service.UserService;
 import com.smart.star.util.JwtUtils;
 import com.smart.star.util.Result;
@@ -12,7 +14,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +32,9 @@ public class SysUserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private SysUserMapper userMapper;
+
     @PostMapping("/register")
     @ApiOperation("用户注册")
     @ApiImplicitParams({@ApiImplicitParam(name = "phone",value = "手机号"),
@@ -41,7 +48,7 @@ public class SysUserController {
             if(res){
                 return Result.success();
             }else {
-                return Result.fail("注册失败！");
+                return Result.fail("操作失败！");
             }
         }
     }
@@ -69,6 +76,19 @@ public class SysUserController {
         }else {
             return Result.fail("用户不存在！");
         }
+    }
+
+
+
+    @GetMapping("/getAllUsers")
+    @ApiOperation("获取所有用户")
+    public Result getAllUsers() {
+        List<SysUserEntity> list = new ArrayList<>();
+        List<SysUserEntity> users = userMapper.getAllUsers();
+        for (SysUserEntity user: users) {
+            list.add(user);
+        }
+        return Result.success(list);
     }
 
 }

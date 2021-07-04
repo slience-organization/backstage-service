@@ -1,5 +1,6 @@
 package com.smart.star.controller;
 
+import com.smart.star.entity.SysRoleEntity;
 import com.smart.star.mapper.SysRoleMapper;
 import com.smart.star.util.Result;
 import io.swagger.annotations.Api;
@@ -7,12 +8,11 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,6 +45,18 @@ public class SysRoleController {
             return Result.success("操作成功");
         }
         return Result.fail("操作失败");
+    }
+
+    @GetMapping("/getAllRoles")
+    @ApiOperation("获取所有角色")
+    public Result getAllRoles() {
+        List<SysRoleEntity> list = new ArrayList<>();
+        List<SysRoleEntity> roles = sysRoleMapper.getAllRoles();
+        for (SysRoleEntity role: roles) {
+            list.add(role);
+        }
+        return Result.success(list);
+
     }
 
 }
