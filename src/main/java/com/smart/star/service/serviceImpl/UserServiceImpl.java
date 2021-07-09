@@ -25,11 +25,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean register(String phone, String password) {
+    public Boolean addUser(String phone, String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(password);
 
-        return sysUserMapper.register(phone, encodedPassword);
+        return sysUserMapper.addUser(phone, encodedPassword);
     }
 
     @Override

@@ -10,6 +10,12 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+#MyBatis使用pageHelper分页
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+
 
 #spring相关
 spring:

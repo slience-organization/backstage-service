@@ -38,7 +38,7 @@
     </select>
 
 
-    <insert id="register">
+    <insert id="addUser">
         <selectKey keyProperty="uid" resultType="string" order="BEFORE">
             select replace(uuid(), '-', '') as id from dual
         </selectKey>

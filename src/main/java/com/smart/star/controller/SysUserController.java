@@ -35,16 +35,18 @@ public class SysUserController {
     @Autowired
     private SysUserMapper userMapper;
 
-    @PostMapping("/register")
-    @ApiOperation("用户注册")
-    @ApiImplicitParams({@ApiImplicitParam(name = "phone",value = "手机号"),
+    @PostMapping("/addUser")
+    @ApiOperation("添加用户")
+    @ApiImplicitParams({@ApiImplicitParam(name = "phone",value = "账号(手机号)"),
             @ApiImplicitParam(name = "password",value = "密码")})
-    public Result register(@RequestParam String phone, @RequestParam String password) {
+    public Result register(@RequestBody Map<String,String> params) {
+        String phone = params.get("phone");
+        String password = params.get("password");
         MyUserDetails user = userService.getUserByPhone(phone);
         if(user!=null) {
             return Result.fail("用户已存在！");
         }else {
-            Boolean res = userService.register(phone, password);
+            Boolean res = userService.addUser(phone, password);
             if(res){
                 return Result.success();
             }else {

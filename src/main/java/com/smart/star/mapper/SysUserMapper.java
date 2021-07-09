@@ -30,7 +30,7 @@ public interface SysUserMapper {
      * @Param [phone, password]
      * @return java.lang.Boolean
      **/
-    Boolean register(String phone, String password);
+    Boolean addUser(String phone, String password);
 
     MyUserDetails getUserByPhone(String phone);
 

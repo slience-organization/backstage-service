@@ -12,7 +12,7 @@ public interface UserService {
 
     MyUserDetails getUserByPhone(String phone);
 
-    Boolean register(String phone, String password);
+    Boolean addUser(String phone, String password);
 
     Boolean matchesPwd(String password, String encryptedPassword);
 
